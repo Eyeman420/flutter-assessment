@@ -1,3 +1,5 @@
+import 'package:dummy_profile_listing/add_user_form.dart';
+import 'package:dummy_profile_listing/user_profile_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_slidable/flutter_slidable.dart';
 import 'package:http/http.dart' as http;
@@ -143,12 +145,28 @@ class _HomePageState extends State<HomePage> {
                             ),
                           ],
                         ),
+
+                        // This part display contact list
                         child: ListTile(
                           leading: CircleAvatar(
                             backgroundImage: NetworkImage(user.avatar),
                           ),
                           title: Text('${user.firstName} ${user.lastName}'),
                           subtitle: Text(user.email),
+                          trailing: IconButton(
+                            icon: const Icon(Icons.telegram), // The send icon
+                            onPressed: () {
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                  builder: (context) =>
+                                      UserProfilePage(user: user),
+                                ),
+                              );
+                              print(
+                                  'Send icon tapped for ${user.firstName} ${user.lastName}');
+                            },
+                          ),
                         ),
                       );
                     },
@@ -158,7 +176,12 @@ class _HomePageState extends State<HomePage> {
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: () {
-          // Navigate to add user form or perform another action
+          Navigator.push(
+            context,
+            MaterialPageRoute(
+              builder: (context) => const AddUserForm(),
+            ),
+          );
         },
         child: const Icon(Icons.add),
       ),

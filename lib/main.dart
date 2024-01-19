@@ -1,3 +1,7 @@
+//Disclaimer: I try my best to complete this assesment as much as possible
+//even though I'm currently very busy with my FYP presentation
+//and sorry if my postman implementation very bad because this API is new to me
+
 import 'package:dummy_profile_listing/home_page.dart';
 import 'package:flutter/material.dart';
 
